@@ -1,0 +1,30 @@
+.time-row {
+  background: rgb(58, 58, 58);
+  padding: 10px 20px 10px 80px;
+  color: white;
+  width: fit-content;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  margin-right: 140px;
+}
+
+.left-column {
+  background: gray;
+
+  > div {
+    height: 50px;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.place {
+  margin-right: 50px;
+}
