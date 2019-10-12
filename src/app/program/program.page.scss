@@ -1,32 +1,92 @@
-.timeline {
+.table{
+    overflow: auto;   
+}
 
+.timeline {
     height: 35px;
     display: flex;
     align-items: center;
-    background-color: gray;
+    background-color: #444;
+    box-shadow: 0 0 6px #333;
+    width: fit-content;
 
     .time {
-
         width: 340px;
-        
+        flex-shrink: 0;
     }
-
 }
 
-.presentation {
-
-    width: 440px;
-    height: 130px;
-    border-radius: 15px;
-    background-color: white;
-
-    .icon {
-
-        height: 100%;
-        width: 135px;
-        background: url('https://firebasestorage.googleapis.com/v0/b/pinoc-2019.appspot.com/o/carina-nebula-1995394_1280.jpg?alt=media');
-        background-size: cover;
-        background-position: center center;
+.row{
+    width: fit-content;
+    .presentations{
+        display: flex; flex-direction: row;
     }
+    .room{
+        margin-top: 32px;
+        margin-bottom: 16px;
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    .presentation {
+        width: 440px;
+        height: 100px;
+        border-radius: 15px;
+        background-color: white;
+        display: flex;
+        color: #111;
+        overflow: hidden;
+        position: relative;
 
+        .metadata{
+            padding: 0 0 0 25px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 200px); // holy shit i can do single line comments
+    
+            .title{
+                font-weight: bolder;
+                font-size: 1.25em;
+                /*word-break: normal;
+                text-overflow: ellipsis;*/
+            }
+            .subtitle{
+                color: #555;
+                font-size: .8em;
+            }
+        }
+    
+        .icon {
+            height: 100%;
+            width: 100px;
+            background: url('https://firebasestorage.googleapis.com/v0/b/pinoc-2019.appspot.com/o/carina-nebula-1995394_1280.jpg?alt=media');
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            flex-shrink: 0;
+    
+            .overlay {
+                color: white;
+                position: absolute;
+                background: #000b;
+                width: 100%;
+                padding: .5em 0;
+                text-align: center;
+                font-size: .75em;
+                bottom: 0;
+            }
+        }
+    
+        .follow{
+            display: flex;
+            align-items: center;
+            font-size: 50px;
+            padding: 25px;
+            //padding-left: 50px;
+            //background: linear-gradient(to right, transparent, white, white, white);
+            position: absolute;
+            right: 0;
+            height: 100%;
+        }
+    }
 }
