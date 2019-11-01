@@ -20,13 +20,4 @@ export class ProgramPage {
 
   }
 
-  leftPixelShift(startTime: string, base: number) {
-
-    const [hour, minute] = startTime.split(':').map(x => parseInt(x))
-    const minutes = (hour < 17 ? 24 + hour : hour) * 60 + minute - base
-    
-    return minutes / 60
-
-  }
-
 }

@@ -38,9 +38,10 @@
 
 			<div class="presentations">
 
-				<div *ngFor="let event of events$ | async">
+				<ng-container *ngFor="let event of events$ | async">
 
-					<div class="presentation" *ngIf="event.room == room">
+					<div class="presentation" *ngIf="event.room == room" [style.marginLeft.vw]="event.start_time | calcLeftPixelShift">
+					
 						<div class="icon">
 							<div class="overlay">
 								<div class="text">{{event.start_time | calcTime : event.length}}</div>
@@ -54,10 +55,11 @@
 
 						<div class="follow">
 							<ion-icon name="star-outline"></ion-icon>
+					
 						</div>
 					</div>
 
-				</div>
+				</ng-container>
 
 			</div>
 		</div>
