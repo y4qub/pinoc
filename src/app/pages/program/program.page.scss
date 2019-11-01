@@ -1,7 +1,20 @@
+$stripe1: #00000000;
+$stripe2: #00000050;
+
+$half_n_hour: 400px;
+
 $event_height: 100px;
 
+.container{
+    overflow-x: auto;
+}
+
 .table{
-    overflow: auto;   
+    overflow: auto; 
+    width: fit-content;
+    height: fit-content;
+    background-attachment: scroll;
+    background: repeating-linear-gradient(to right, $stripe1, $stripe1 $half_n_hour/2, $stripe2 $half_n_hour/2, $stripe2 $half_n_hour)  ;
 }
 
 .timeline {
@@ -13,7 +26,7 @@ $event_height: 100px;
     width: fit-content;
 
     .time {
-        width: 350px;
+        width: $half_n_hour;
         flex-shrink: 0;
     }
 }
@@ -45,7 +58,8 @@ $event_height: 100px;
             justify-content: center;
             display: flex;
             flex-direction: column;
-            width: calc(100% - 200px); // holy shit i can do single line comments
+            //width: calc(100% - 200px); // holy shit i can do single line comments
+            width: 100%;
     
             .title{
                 font-weight: bolder;
@@ -87,8 +101,8 @@ $event_height: 100px;
             padding: 25px;
             //padding-left: 50px;
             //background: linear-gradient(to right, transparent, white, white, white);
-            position: absolute;
-            right: 0;
+            //position: absolute;
+            //right: 0;
             height: 100%;
         }
     }
