@@ -45,7 +45,7 @@
 					<div class="presentation" *ngIf="event.room == room" [style.left.px]="(event.start_time | calcLeftPixelShift) * 700"
 					[style.width.px]="event.length / 60 * 700">
 					
-						<div class="icon">
+						<div class="icon" *ngIf="event.length > 30">
 							<div class="overlay">
 								<div class="text">{{event.start_time | calcTime : event.length}}</div>
 							</div>
