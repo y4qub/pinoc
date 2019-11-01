@@ -1,8 +1,9 @@
 export interface Presentation {
-    presentation: string
-    speaker: string
+    event: string
+    subtext: string
     start_time: string
-    length: string
+    length: number
     room: string
-    is_main: boolean
+    type: string
+    disable?: boolean
 }

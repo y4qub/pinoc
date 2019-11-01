@@ -32,92 +32,33 @@
 			<div class="time">00:30</div>
 		</div>
 
-		<div class="row">
-			<div class="room">4. D (245)</div>
-			<div class="presentations">
-				<div class="presentation">
-					<div class="icon">
-						<div class="overlay">
-							<div class="text">17:00 - 18:30</div>
-						</div>
-					</div>
-					<div class="metadata">
-						<div class="title">(Ne)přesnosti v seriálu Černobyl</div>
-						<div class="subtitle">Ing. Radim Možnar</div>
-					</div>
-					<div class="follow">
-						<ion-icon name="star-outline"></ion-icon>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div class="row" *ngFor="let room of rooms$ | async">
 
-		<!-- mock data, more rooms -->
+			<div class="room">{{room}}</div>
 
-		<div class="row">
-			<div class="room">8. A (128)</div>
 			<div class="presentations">
-				<div class="presentation">
-					<div class="icon">
-						<div class="overlay">
-							<div class="text">17:00 - 18:30</div>
+
+				<div *ngFor="let event of events$ | async">
+
+					<div class="presentation" *ngIf="event.room == room">
+						<div class="icon">
+							<div class="overlay">
+								<div class="text">{{event.start_time | calcTime : event.length}}</div>
+							</div>
+						</div>
+
+						<div class="metadata">
+							<div class="title">{{event.event}}</div>
+							<div class="subtitle">{{event.subtext}}</div>
+						</div>
+
+						<div class="follow">
+							<ion-icon name="star-outline"></ion-icon>
 						</div>
 					</div>
-					<div class="metadata">
-						<div class="title">Barevná poezie vesmíru</div>
-						<div class="subtitle">RNDr. Tomáš Graf Ph. D.</div>
-					</div>
-					<div class="follow">
-						<ion-icon name="star-outline"></ion-icon>
-					</div>
+
 				</div>
-				<div class="presentation" style="left:170px; width: 880px;">
-					<div class="icon">
-						<div class="overlay">
-							<div class="text">17:00 - 18:30</div>
-						</div>
-					</div>
-					<div class="metadata">
-						<div class="title">Barevná poezie vesmíru</div>
-						<div class="subtitle">RNDr. Tomáš Graf Ph. D.</div>
-					</div>
-					<div class="follow">
-						<ion-icon name="star-outline"></ion-icon>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="room">IVT1 (302)</div>
-			<div class="presentations">
-				<div class="presentation">
-					<div class="icon">
-						<div class="overlay">
-							<div class="text">17:00 - 18:30</div>
-						</div>
-					</div>
-					<div class="metadata">
-						<div class="title">5400RPM, aneb proč je všechno pomalé</div>
-						<div class="subtitle">vignedev</div>
-					</div>
-					<div class="follow">
-						<ion-icon name="star-outline"></ion-icon>
-					</div>
-				</div>
-				<div class="presentation" style="left: 340px;">
-					<div class="icon">
-						<div class="overlay">
-							<div class="text">17:00 - 18:30</div>
-						</div>
-					</div>
-					<div class="metadata">
-						<div class="title">Release-active drugs</div>
-						<div class="subtitle">Lucie Peterková</div>
-					</div>
-					<div class="follow">
-						<ion-icon name="star-outline"></ion-icon>
-					</div>
-				</div>
+
 			</div>
 		</div>
 

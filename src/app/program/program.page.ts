@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Presentation } from '../interfaces/presentation.interface.js';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BackendService } from '../backend.service.js';
 
 @Component({
   selector: 'app-program',
@@ -9,11 +10,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProgramPage {
 
-    data: Array<Presentation>
+  events$: Observable<Presentation[]>
+  rooms$: Observable<string[]>
 
-  constructor(private http: HttpClient) {
+  constructor(private backend: BackendService) {
 
-    this.http.get('pinoc.cz/harmonogram.json').subscribe(console.log)
+    this.events$ = this.backend.getPresentations()
+    this.rooms$ = this.backend.getRooms()
+
+  }
+
+  leftPixelShift(startTime: string, base: number) {
+
+    const [hour, minute] = startTime.split(':').map(x => parseInt(x))
+    const minutes = (hour < 17 ? 24 + hour : hour) * 60 + minute - base
+    
+    return minutes / 60
 
   }
 

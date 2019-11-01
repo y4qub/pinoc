@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ProgramPage } from './program.page';
+import { CalcTimePipe } from '../calc-time.pipe';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { ProgramPage } from './program.page';
       }
     ])
   ],
-  declarations: [ProgramPage]
+  declarations: [ProgramPage, CalcTimePipe],
 })
 export class ProgramPageModule {}
