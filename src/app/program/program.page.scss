@@ -1,3 +1,5 @@
+$event_height: 100px;
+
 .table{
     overflow: auto;   
 }
@@ -11,7 +13,7 @@
     width: fit-content;
 
     .time {
-        width: 340px;
+        width: 350px;
         flex-shrink: 0;
     }
 }
@@ -20,6 +22,7 @@
     width: fit-content;
     .presentations{
         display: flex; flex-direction: row;
+        position: relative; height: $event_height;
     }
     .room{
         margin-top: 32px;
@@ -29,13 +32,13 @@
     }
     .presentation {
         width: 440px;
-        height: 100px;
+        height: $event_height;
         border-radius: 15px;
         background-color: white;
         display: flex;
         color: #111;
         overflow: hidden;
-        position: relative;
+        position: absolute;
 
         .metadata{
             padding: 0 0 0 25px;

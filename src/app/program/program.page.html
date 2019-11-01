@@ -30,37 +30,36 @@
 			<div class="time">23:30</div>
 			<div class="time">00:00</div>
 			<div class="time">00:30</div>
+			<div class="time">01:00</div>
+			<div class="time">01:30</div>
+			<div class="time">02:00</div>
+			<div class="time">02:30</div>
+			<div class="time">03:00</div>
+			<div class="time">03:30</div>
 		</div>
 
 		<div class="row" *ngFor="let room of rooms$ | async">
-
 			<div class="room">{{room}}</div>
-
 			<div class="presentations">
-
 				<ng-container *ngFor="let event of events$ | async">
-
-					<div class="presentation" *ngIf="event.room == room" [style.marginLeft.vw]="event.start_time | calcLeftPixelShift">
+					<div class="presentation" *ngIf="event.room == room" [style.left.px]="(event.start_time | calcLeftPixelShift) * 700"
+					[style.width.px]="event.length / 60 * 700">
 					
 						<div class="icon">
 							<div class="overlay">
 								<div class="text">{{event.start_time | calcTime : event.length}}</div>
 							</div>
 						</div>
-
 						<div class="metadata">
 							<div class="title">{{event.event}}</div>
 							<div class="subtitle">{{event.subtext}}</div>
 						</div>
-
 						<div class="follow">
 							<ion-icon name="star-outline"></ion-icon>
 					
 						</div>
 					</div>
-
 				</ng-container>
-
 			</div>
 		</div>
 
