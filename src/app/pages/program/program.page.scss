@@ -77,8 +77,8 @@ $event_height: 100px;
             height: 100%;
             width: 100px;
             background: url('https://firebasestorage.googleapis.com/v0/b/pinoc-2019.appspot.com/o/carina-nebula-1995394_1280.jpg?alt=media');
-            background-size: cover;
-            background-position: center center;
+            background-size: cover !important;
+            background-position: center center !important;
             position: relative;
             flex-shrink: 0;
     

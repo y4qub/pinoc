@@ -12,7 +12,6 @@
 <ion-content>
 <div class=container>
 	<div class="table">
-
 		<div class="timeline">
 			<div class="time">17:00</div>
 			<div class="time">17:30</div>
@@ -42,16 +41,17 @@
 			<div class="room">{{room}}</div>
 			<div class="presentations">
 				<ng-container *ngFor="let event of events$ | async">
-					<div class="presentation" *ngIf="event.room == room" [style.left.px]="(event.start_time | calcLeftPixelShift) * 800"
+					<div class="presentation" *ngIf="event.room == room"
+					[style.left.px]="(event.start_time | calcLeftPixelShift) * 800"
 					[style.width.px]="event.length / 60 * 800">
 					
-						<div class="icon" *ngIf="event.length > 30">
+						<div class="icon" *ngIf="event.length > 30 && event.image" [style.background]="'url('+event.image+')'">
 							<div class="overlay">
 								<div class="text">{{event.start_time | calcTime : event.length}}</div>
 							</div>
 						</div>
 						<div class="metadata">
-							<div class="subtitle" *ngIf="event.length <= 30">{{event.start_time | calcTime : event.length}}</div>
+							<div class="subtitle" *ngIf="event.length <= 30 || !event.image">{{event.start_time | calcTime : event.length}}</div>
 							<div class="title">{{event.event}}</div>
 							<div class="subtitle">{{event.subtext}}</div>
 						</div>
@@ -63,7 +63,6 @@
 				</ng-container>
 			</div>
 		</div>
-
 	</div>
 </div>
 </ion-content>

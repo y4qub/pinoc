@@ -6,4 +6,5 @@ export interface Presentation {
     room: string
     type: string
     disable?: boolean
+    image?: string
 }
