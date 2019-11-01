@@ -5,5 +5,4 @@ export interface Presentation {
     length: number
     room: string
     type: string
-    disable?: boolean
 }
