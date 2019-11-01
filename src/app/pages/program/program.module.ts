@@ -5,8 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ProgramPage } from './program.page';
-import { CalcTimePipe } from '../calc-time.pipe';
-import { CalcLeftPixelShiftPipe } from '../calc-left-pixel-shift.pipe';
+import { CalcTimePipe } from '../../pipes/calc-time.pipe';
+import { CalcLeftPixelShiftPipe } from '../../pipes/calc-left-pixel-shift.pipe';
 
 @NgModule({
   imports: [

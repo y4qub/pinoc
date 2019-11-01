@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Presentation } from '../interfaces/presentation.interface.js';
+import { Presentation } from '../../interfaces/presentation.interface';
 import { Observable } from 'rxjs';
-import { BackendService } from '../backend.service.js';
+import { BackendService } from '../../providers/backend.service';
 
 @Component({
   selector: 'app-program',
