@@ -15,8 +15,6 @@ export class CalcLeftPixelShiftPipe implements PipeTransform {
     const [hour, minute] = startTime.split(':').map(x => parseInt(x))
     const minutes = (hour < 17 ? 24 + hour : hour) * 60 + minute - base
 
-    console.log(minutes / 60)
-
     return minutes / 60
 
   }

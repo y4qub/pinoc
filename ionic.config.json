@@ -1,5 +1,8 @@
 {
   "name": "pinoc",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "c2589aa2"
 }
