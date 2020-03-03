@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Presentation } from '../interfaces/presentation.interface';
 import { map } from 'rxjs/operators'
+//@ts-ignore
+import data from './data.json'
+import { Observable, of } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class BackendService {
 
   private endpoint = 'https://pinoc.cz/data.json'
@@ -11,18 +14,22 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   getPresentations() {
-    return this.http.get(this.endpoint)
-      .pipe(map(this.filterOutComments))
+    // return this.http.get(this.endpoint)
+    //   .pipe(map(this.filterOutComments))
+    return of(data).pipe(map(this.filterOutComments))
   }
 
-  private filterOutComments = (events: Presentation[]) => events.filter(event => typeof event == 'object' && !event.disable)
+  private filterOutComments = (events: Presentation[]) => events.filter(event => {
+    return typeof event == 'object' && !event.disable
+  })
 
   getRooms() {
-    return this.http.get(this.endpoint)
+    return of(data)
       .pipe(
         map(this.filterOutComments),
         map((events: Presentation[]) => {
-          let rooms : object = {}
+          console.log(events)
+          let rooms: object = {}
           events.forEach(event => {
             rooms[event.room] = null
           })

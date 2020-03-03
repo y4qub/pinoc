@@ -1,4 +1,5 @@
 export interface Presentation {
+    id: string
     event: string
     subtext: string
     start_time: string
