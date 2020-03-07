@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Presentation } from '../../interfaces/presentation.interface';
-import { Observable } from 'rxjs';
 import { BackendService } from '../../providers/backend.service';
-import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-program',
@@ -11,13 +10,13 @@ import { Storage } from '@ionic/storage';
 })
 export class ProgramPage {
 
-  events: Presentation[]
-  rooms: string[]
+  events$: Observable<Presentation[]>
+  rooms$: Observable<string[]>
 
-  constructor(private backend: BackendService, private localStorage: Storage) {
+  constructor(private backend: BackendService) {
 
-    this.backend.rooms$.subscribe(data => this.rooms = data)
-    this.backend.presentations$.subscribe(data => this.events = data)
+    this.events$ = this.backend.presentations$
+    this.rooms$ = this.backend.rooms$
 
   }
 

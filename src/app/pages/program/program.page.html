@@ -11,7 +11,7 @@
 
 <ion-content>
 	<div class="container">
-		<div class="table">
+		<div class="table" *ngIf="{events: events$ | async, rooms: rooms$ | async} as obs">
 			<div class="timeline">
 				<div class="time">17:00</div>
 				<div class="time">17:30</div>
@@ -37,10 +37,10 @@
 				<div class="time">03:30</div>
 			</div>
 
-			<div class="row" *ngFor="let room of rooms">
-				<div class="room">{{room}}</div>
+			<div class="row" *ngFor="let room of obs.rooms">
+				<div class="room">{{room | roomFormat}}</div>
 				<div class="presentations">
-					<ng-container *ngFor="let event of events">
+					<ng-container *ngFor="let event of obs.events">
 						<div class="presentation" *ngIf="event.room == room"
 							[style.left.px]="(event.time | calcLeftPixelShift) * 800"
 							[style.width.px]="event.length / 60 * 800">

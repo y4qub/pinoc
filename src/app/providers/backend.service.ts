@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Presentation } from '../interfaces/presentation.interface';
 import { map, share, first } from 'rxjs/operators'
 import { Observable, Subject } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx'
 
 @Injectable({ providedIn: 'root' })
 export class BackendService {
@@ -20,26 +22,23 @@ export class BackendService {
   rooms$: Observable<string[]> = this.presentations$.pipe(
     map(presentations => {
       let rooms = {}
-      presentations.forEach(presentation => rooms[presentation.room] = null)
+      presentations.forEach(presentation => {
+        rooms[presentation.room] = null
+      })
       return Object.keys(rooms)
     })
   )
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private localStorage: Storage) {
     // this.http.post(this.endpoint, { data: null }).pipe(first()).toPromise().then(data => this.presentationSubject.next(data['result']))
   }
 
+  // async savePresentations(data) {
+  //   await this.localStorage.set('presentations', data)
+  // }
 
-}
+  // favoritePresentation(id) {
+  //   this.localNotification.schedule({id: id, text: })
+  // }
 
-const translation = {
-  201: 'Přednáškovna 1 (201)',
-  204: 'Přednáškovna 2 (204)',
-  206: 'Přednáškovna 3 (206)',
-  207: 'Přednáškovna 4 (207)',
-  208: 'Přednáškovna 5 (208)',
-  FOOD: 'Jídelna',
-  FRONT: 'Vestibul',
-  SPORT: 'Šatny u horní tělocvičny',
-  ART: 'Ateliér'
 }

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ProgramPage } from './program.page';
 import { CalcTimePipe } from '../../pipes/calc-time.pipe';
 import { CalcLeftPixelShiftPipe } from '../../pipes/calc-left-pixel-shift.pipe';
+import { RoomFormatPipe } from 'src/app/pipes/room-format.pipe';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { CalcLeftPixelShiftPipe } from '../../pipes/calc-left-pixel-shift.pipe';
       }
     ])
   ],
-  declarations: [ProgramPage, CalcTimePipe, CalcLeftPixelShiftPipe],
+  declarations: [ProgramPage, CalcTimePipe, CalcLeftPixelShiftPipe, RoomFormatPipe],
 })
 export class ProgramPageModule {}
