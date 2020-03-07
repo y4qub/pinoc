@@ -1,11 +1,10 @@
 export interface Presentation {
-    id: string
-    event: string
-    subtext: string
-    start_time: string
+    title: string
+    author: string
+    description: string
+    time: string
     length: number
     room: string
     type: string
-    disable?: boolean
     image?: string
 }

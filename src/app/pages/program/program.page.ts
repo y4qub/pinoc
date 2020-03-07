@@ -11,20 +11,18 @@ import { Storage } from '@ionic/storage';
 })
 export class ProgramPage {
 
-  events$: Observable<Presentation[]>
-  rooms$: Observable<string[]>
+  events: Presentation[]
+  rooms: string[]
 
   constructor(private backend: BackendService, private localStorage: Storage) {
 
-    this.events$ = this.backend.getPresentations()
-    this.rooms$ = this.backend.getRooms()
+    this.backend.rooms$.subscribe(data => this.rooms = data)
+    this.backend.presentations$.subscribe(data => this.events = data)
 
   }
 
   // savePresentation(presentation: Presentation) {
-
   //   this.localStorage.set(presentation.id, presentation)
-
   // }
 
 }

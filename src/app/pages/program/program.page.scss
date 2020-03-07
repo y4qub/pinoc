@@ -1,24 +1,25 @@
-$stripe1: #00000000;
-$stripe2: #00000050;
+$stripe1: #161626;
+$stripe2: #1A1A23;
 
 $half_n_hour: 400px;
 
-$event_height: 100px;
+$event_height: 75px;
 
 .container{
     overflow-x: auto;
 }
 
 .table{
-    overflow: auto; 
+    overflow: auto;
     width: fit-content;
     height: fit-content;
     background-attachment: scroll;
-    background: repeating-linear-gradient(to right, $stripe1, $stripe1 $half_n_hour/2, $stripe2 $half_n_hour/2, $stripe2 $half_n_hour)  ;
+    background: repeating-linear-gradient(to right, $stripe1, $stripe1 $half_n_hour/2, $stripe2 $half_n_hour/2, $stripe2 $half_n_hour);
 }
 
 .timeline {
-    height: 35px;
+    padding-left: 23px;
+    height: 29px;
     display: flex;
     align-items: center;
     background-color: #444;
@@ -34,12 +35,15 @@ $event_height: 100px;
 .row{
     width: fit-content;
     .presentations{
-        display: flex; flex-direction: row;
-        position: relative; height: $event_height;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        height: $event_height;
     }
     .room{
-        margin-top: 32px;
-        margin-bottom: 16px;
+        margin-left: 23px;
+        margin-top: 20px;
+        margin-bottom: 12px;
         font-weight: bold;
         font-size: 1.5em;
     }
