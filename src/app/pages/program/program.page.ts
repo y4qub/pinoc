@@ -20,8 +20,4 @@ export class ProgramPage {
 
   }
 
-  // savePresentation(presentation: Presentation) {
-  //   this.localStorage.set(presentation.id, presentation)
-  // }
-
 }
