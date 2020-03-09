@@ -31,10 +31,10 @@
 				<div class="time">00:30</div>
 				<div class="time">01:00</div>
 				<div class="time">01:30</div>
-				<div class="time">02:00</div>
-				<div class="time">02:30</div>
+				<!-- <div class="time">02:00</div> -->
+				<!-- <div class="time">02:30</div>
 				<div class="time">03:00</div>
-				<div class="time">03:30</div>
+				<div class="time">03:30</div> -->
 			</div>
 
 			<div class="row" *ngFor="let room of obs.rooms">
@@ -42,8 +42,8 @@
 				<div class="presentations">
 					<ng-container *ngFor="let event of obs.events">
 						<div class="presentation" *ngIf="event.room == room"
-							[style.left.px]="(event.time | calcLeftPixelShift) * 600"
-							[style.width.px]="event.length / 60 * 600">
+							[style.left.px]="(event.time | calcLeftPixelShift) * 560"
+							[style.width.px]="event.length / 60 * 560">
 
 							<div class="icon" *ngIf="event.length > 30 && event.image"
 								[style.background]="'url('+event.image+')'" (click)="showDetail(event)">

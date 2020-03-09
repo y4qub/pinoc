@@ -46,12 +46,34 @@ export class BackendService {
     })
   }
 
-  private async scheduleNotification(afterMidnight: boolean, h: number, m: number, presId: string) {
+  private async scheduleNotification(h: number, m: number, presId: string) {
+    const perGranted = await this.localNotifications.requestPermission()
+    if (!perGranted) return
+
+    const d = h < 12 ? 14 : 13
+    if (m < 5) {
+      h = h - 1
+      m = 55
+    } else {
+      m = m - 5
+    }
+    const date = new Date(2020, 2, d, h, m)
+
+    const presentations = await this.loadPresentations()
+    const pres = presentations[presId]
     const notId = parseInt(`${h}${m}`)
-    const pres = await this.loadPresentations()
-    pres[presId].notificationId = notId
+    pres.notificationId = notId
     this.savePresentations(pres)
-    this.localNotifications.schedule({ trigger: { at: new Date(2020, 3, afterMidnight ? 14 : 13, h, m) }, id: notId})
+
+    await this.localNotifications.schedule({
+      trigger: { at: date },
+      id: notId,
+      title: 'Pi Noc',
+      text: `Přednáška '${pres.title}' brzy začne!`,
+      foreground: true,
+      timeoutAfter: 30000,
+      launch: true
+    })
   }
 
   private async unscheduleNotification(presId: string) {
@@ -82,7 +104,7 @@ export class BackendService {
     await this.savePresentations(presentations)
     const h = parseInt(presentations[presId].time.split(':')[0])
     const m = parseInt(presentations[presId].time.split(':')[1])
-    await this.scheduleNotification(h < 12, h, m, presId)
+    await this.scheduleNotification(h, m, presId)
   }
 
   async unfavoritePresentation(presId: string) {
