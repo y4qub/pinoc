@@ -60,16 +60,15 @@ export class BackendService {
     const date = new Date(2020, 2, d, h, m)
 
     const presentations = await this.loadPresentations()
-    const pres = presentations[presId]
-    const notId = parseInt(`${h}${m}`)
-    pres.notificationId = notId
-    this.savePresentations(pres)
+    const notId = parseInt(`8${h}${m}8`)
+    presentations[presId].notificationId = notId
+    this.savePresentations(presentations)
 
     await this.localNotifications.schedule({
       trigger: { at: date },
       id: notId,
       title: 'Pi Noc',
-      text: `Přednáška '${pres.title}' brzy začne!`,
+      text: `Přednáška '${presentations[presId].title}' brzy začne!`,
       foreground: true,
       timeoutAfter: 30000,
       launch: true
@@ -114,7 +113,7 @@ export class BackendService {
     await this.unscheduleNotification(presId)
   }
 
-  private async savePresentations(presentations) {
+  private async savePresentations(presentations: Presentations) {
     const data = await this.localStorage.set('presentations', presentations)
     this.localPresentations$.next(presentations)
     return data
