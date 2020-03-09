@@ -1,7 +1,7 @@
 $stripe1: #161626;
 $stripe2: #1A1A23;
 
-$half_n_hour: 400px;
+$half_n_hour: 300px;
 
 $event_height: 75px;
 
@@ -10,6 +10,7 @@ $event_height: 75px;
 }
 
 .table{
+    width: 100%;
     overflow: auto;
     width: fit-content;
     height: fit-content;
@@ -48,10 +49,11 @@ $event_height: 75px;
         font-size: 1.5em;
     }
     .presentation {
+        cursor: pointer;
         width: 440px;
         height: $event_height;
         border-radius: 15px;
-        background-color: rgb(156, 93, 93);
+        background-color: white;
         display: flex;
         color: #111;
         overflow: hidden;

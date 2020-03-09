@@ -7,4 +7,7 @@ export interface Presentation {
     room: string
     type: string
     image?: string
+    id: string
+    favorite?: boolean
+    notificationId?: number
 }

@@ -15,9 +15,21 @@ export class ProgramPage {
 
   constructor(private backend: BackendService) {
 
-    this.events$ = this.backend.presentations$
+    this.events$ = this.backend.localPresentationsArray$
     this.rooms$ = this.backend.rooms$
 
+  }
+
+  presentationAction(id: string, favorite?: boolean) {
+    if (favorite) {
+      this.backend.unfavoritePresentation(id)
+    } else {
+      this.backend.favoritePresentation(id)
+    }
+  }
+
+  showDetail(presentation: Presentation) {
+    this.backend.showDetail(presentation)
   }
 
 }

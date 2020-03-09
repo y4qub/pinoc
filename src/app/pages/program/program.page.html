@@ -42,20 +42,24 @@
 				<div class="presentations">
 					<ng-container *ngFor="let event of obs.events">
 						<div class="presentation" *ngIf="event.room == room"
-							[style.left.px]="(event.time | calcLeftPixelShift) * 800"
-							[style.width.px]="event.length / 60 * 800">
+							[style.left.px]="(event.time | calcLeftPixelShift) * 600"
+							[style.width.px]="event.length / 60 * 600">
 
 							<div class="icon" *ngIf="event.length > 30 && event.image"
-								[style.background]="'url('+event.image+')'">
+								[style.background]="'url('+event.image+')'" (click)="showDetail(event)">
 								<div class="overlay">
 									<div class="text">{{event.time | calcTime : event.length}}</div>
 								</div>
 							</div>
-							<div class="metadata">
+							<div class="metadata" (click)="showDetail(event)">
 								<div class="subtitle" *ngIf="event.length <= 30 || !event.image">
 									{{event.time | calcTime : event.length}}</div>
 								<div class="title">{{event.title}}</div>
 								<div class="subtitle">{{event.author}}</div>
+							</div>
+							<div class="follow" (click)="presentationAction(event.id, event?.favorite);event.favorite = !event.favorite">
+								<ion-icon name="star-outline" *ngIf="!event?.favorite"></ion-icon>
+								<ion-icon name="star" *ngIf="event?.favorite"></ion-icon>
 							</div>
 						</div>
 					</ng-container>
